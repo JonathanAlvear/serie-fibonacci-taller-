@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Taller en calse de la serie Fibonacci</title>
+</head>
+
+<body>
+<h1> Taller </h1> 
+    <form action="">
+        <label fibonacci="primer">Primer numero: </label>
+        <input type="text" name="primer" id="primer">
+        <br><br>
+        <label fibonacci="segundo">Segundo numero: </label>
+        <input type="text" name="segundo" id="segundo">
+        <br><br>
+        <label fibonacci="maximo">Numero máximo: </label>
+        <input type="text" name="maximo" id="maximo">
+        <br>
+        <br>
+        <input type="button" value="Calcular serie" id="botonSolver">
+        <br>
+    </form>
+    <br>
+    <input type="button" value="Ver Tabla" id="btnGenerar">
+    <br><br><br>
+<hr>
+    <table id="tablaSerie"  border="1">
+
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+</body>
+<script>
+    function Solver(primero,segundo,maximo) {
+        this.primero = primero;
+        this.segundo = segundo;
+        this.maximo = maximo;
+        this.serie = [];
+        this.generar = generar;
+
+        function generar() {
+            this.serie.push(this.primero)
+            this.serie.push(this.segundo);
+        }
+
+    }
+
+    var lista = [];
+
+
+
+    var generadorFibonacci = function(anterior, ultimo) {
+        if (anterior + ultimo > maximoValorSerie) {
+            return lista;
+        } else {
+            nuevo = anterior + ultimo;
+            lista.push(nuevo);
+            return generadorFibonacci(ultimo, nuevo);
+        }
+    }
+    document.getElementById("botonSolver").addEventListener(
+        "click",
+        function() {
+            primerNumero = parseInt(document.getElementById("primer").value);
+            segundoNumero = parseInt(document.getElementById("segundo").value);
+            maximoValorSerie = parseInt(document.getElementById("maximo").value);
+            lista.push(primerNumero);
+            lista.push(segundoNumero);
+            generadorFibonacci(primerNumero, segundoNumero);
+
+        }
+    );
+
+
+            var indice=0;
+            var tabla = document.getElementById("tbody");
+document.getElementById("btnGenerar")
+.addEventListener("click",function muestraDatos(){
+if(indice===lista.length-1){
+
+        return PruebaDe10;
+}else{
+
+    var fila = document.createElement("tr");
+    var fila1 = document.createElement("tr");
+    var fila2 = document.createElement("tr");
+    var td = document.createElement("td");
+    var td1 = document.createElement("td")
+    var td2 = document.createElement("td")
+    td.appendChild(document.createTextNode(lista[indice]));
+    td1.appendChild(document.createTextNode(lista[indice+1]));
+    td2.appendChild(document.createTextNode(lista[indice+2]));
+
+    fila.appendChild(td,);
+    fila.appendChild(td1);
+    fila.appendChild(td2);
+    tabla.appendChild(fila);
+    tabla.appendChild(fila1);
+    tabla.appendChild(fila2);
+    indice++;
+    muestraDatos(indice);
+}
+        })
+
+</script>
+
+</html>
